@@ -588,9 +588,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			_bndlQ = $('.bundleInput input').val();
 			_playerLyncQ = $('.playerLyncInput input:checked').length > 0 ? $('.playerLyncInput input:checked').val() : 0;
 			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
-			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
-			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
-			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
+			_addRASSQ = $('.addRassInput input:checked').length > 0 ? $('.addRassInput input:checked').val() : 0;
 			if ($('.bundleGrid li').length > 0 ) {
 				$('.bundleGrid li.terminal').each(function(i,e) {
 					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _bndlQ );
@@ -604,15 +602,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
 					$(e).find('span').html(_newQ);
 				});
+				$('.bundleGrid li.addRass').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addRASSQ );
+					$(e).find('span').html(_newQ);
+				});
 			}
 		}
 		
 		syncTotalBundleQuan();	
 		
-		$('.bundleInput input,.playerLyncInput input,.addTillInput input').on( 'keyup change' , function() {
+		$('.bundleInput input, .playerLyncInput input, .addTillInput input, .addRassInput input').on( 'keyup change' , function() {
 			syncTotalBundleQuan();
 		});
-		
+		$('.addKDSInput input').on( 'keyup change' , function() {
+			$('.addKDSInput .last-choices').toggle();
+		});
+		$('.addPrintersInput input').on( 'keyup change' , function() {
+			$('.addPrintersInput .last-choices').toggle();
+		});
+		$('.addMobileOrdersInput input').on( 'keyup change' , function() {
+			$('.addMobileOrdersInput .last-choices').toggle();
+		});		
 		$( ".datepicker" ).datepicker({ defaultDate: 35 });
 	
 	});
@@ -812,7 +822,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
 			</div>
 		</div>
-		<div class="validationField addInput">
+		<div class="validationField addKDSInput">
 			<label for="kds_bundle">Additional KDS Bundle?</label>
 			<input id="kds_bundle" name="kds_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<div class="last-choices" hidden>
@@ -820,7 +830,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
 			</div>
 		</div>
-		<div class="validationField addInput">
+		<div class="validationField addPrintersInput">
 			<label for="printers_bundle">Additional Printers?</label>
 			<input id="printers_bundle" name="printers_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<div class="last-choices" hidden>
@@ -828,7 +838,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
 			</div>
 		</div>
-		<div class="validationField addInput">
+		<div class="validationField addMobileOrdersInput">
 			<input id="mobile_orders_bundle" name="mobile_orders_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<label for="mobile_orders_bundle">Additional Mobile Order Takers?</label>
 			<div class="last-choices" hidden>
@@ -838,7 +848,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		</div>
 		<div class="validationField addRassInput">
 			<label for="RAAS_bundle">RAAS?</label>
-			<input id="RAAS_bundle" name="RAAS_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<input id="RAAS_bundle" name="RAAS_bundle" value="1" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 		</div>
 		<div class="bundleGrid">
 				<h3 class="form-title">Bundle Total Order</h3>
@@ -860,7 +870,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="total-last-choices addKDS" ><span data-multiplier="1">1</span> Additional KDS</li>
 				<li class="total-last-choices addPrinters" ><span data-multiplier="1">1</span> Additional Printers</li>
 				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">1</span> Additional Mobile Order Takers</li>
-				<li class="addRAAS" ><span data-multiplier="1">1</span> Add RAAS</li>
+				<li class="addRass"><span data-multiplier="1">1</span> Add RAAS</li>
 			</ul>
 		</div>
 		
