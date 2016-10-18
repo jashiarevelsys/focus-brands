@@ -531,9 +531,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			} ;
 		});
 		
-		function syncBundleQuan(){
+		// first bundle
+		function syncBundleQuan1(){
+			_bndlQ = $('.bundleInput1 input').val();
+			if ($('.bundleGrid1 li').length > 0 ) {
+				$('.bundleGrid1 li.terminal').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _bndlQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+		}
+		
+		syncBundleQuan1();
+		
+		$('.bundleInput1 input').on( 'keyup change' , function() {
+			syncBundleQuan1();
+		});
+
+		// second Bundle
+		function syncBundleQuan2(){
+			_bndlQ = $('.bundleInput2 input').val();
+			if ($('.bundleGrid2 li').length > 0 ) {
+				$('.bundleGrid2 li.terminal').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _bndlQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+		}
+		
+		syncBundleQuan2();
+		
+		$('.bundleInput2 input').on( 'keyup change' , function() {
+			syncBundleQuan2();
+		});
+
+		// third bundles
+		function syncBundleQuan3(){
+			_bndlQ = $('.bundleInput3 input').val();
+			if ($('.bundleGrid3 li').length > 0 ) {
+				$('.bundleGrid3 li.terminal').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _bndlQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+		}
+		
+		syncBundleQuan3();
+		
+		$('.bundleInput3 input').on( 'keyup change' , function() {
+			syncBundleQuan3();
+		});
+		
+
+		// total bundles 
+		function syncTotalBundleQuan(){
 			_bndlQ = $('.bundleInput input').val();
 			_playerLyncQ = $('.playerLyncInput input:checked').length > 0 ? $('.playerLyncInput input:checked').val() : 0;
+			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
+			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
+			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
 			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
 			if ($('.bundleGrid li').length > 0 ) {
 				$('.bundleGrid li.terminal').each(function(i,e) {
@@ -551,19 +607,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			}
 		}
 		
-		syncBundleQuan();	
+		syncTotalBundleQuan();	
 		
 		$('.bundleInput input,.playerLyncInput input,.addTillInput input').on( 'keyup change' , function() {
-			syncBundleQuan();
+			syncTotalBundleQuan();
 		});
 		
 		$( ".datepicker" ).datepicker({ defaultDate: 35 });
 	
 	});
 </script>
+<link rel="stylesheet" href="focus-brands.css">
 		</div>
 	</div>
-</div></div></div></div><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper"><div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+</div></div></div></div>
+<div class="vc_row wpb_row vc_row-fluid">
+	<div class="wpb_column vc_column_container vc_col-sm-12">
+		<div class="vc_column-inner ">
+			<div class="wpb_wrapper">
+				<div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
 
 	<div class="wpb_text_column wpb_content_element ">
 		<div class="wpb_wrapper">
@@ -583,8 +645,71 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<input type="hidden" name="Payment_Processor__c" id="Payment_Processor__c" value="Verifone">
 	<input type="hidden" name="00N50000003GwXj" id="00N50000003GwXj" value="Schlotzsky’s">
 	<!-- New Code -->
-	<div class="form-section section3">
-		h3
+	<div class="form-section container">
+		<h3 class="form-title">QSR Bundles</h3>
+		<div class="bundle-field vc_row">
+			<div class="bundle-input-area vc_col-sm-6 bundleInput1">
+				<input type="number" id="bundle1" value="0">
+				<label for="bundle1">QSR - Drive Thru Order Only - Quantity</label>
+				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
+			</div>
+			<div class="bundleGrid1 vc_col-sm-6">
+				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
+				<ul>
+					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Air <small>16GB White</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Quick Service Software License</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Hardware Configuration Services</li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<div class="bundle-field vc_row">
+			<div class="bundle-input-area vc_col-sm-6 bundleInput2">
+				<input type="number" id="bundle2" value="0">
+				<label for="bundle2">QSR - Drive Thru Cashier - Quantity</label>
+				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
+			</div>
+			<div class="bundleGrid2 vc_col-sm-6">
+				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
+				<ul>
+					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Air <small>16GB White</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> 16x16 Cash Drawer</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Cash Drawer APG Mount Bracket</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Quick Service Software License</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Customer Display Software License</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Hardware Configuration Services</li>
+					<li class="terminal"><span data-multiplier="1">2</span> Two Power Adaptors, Lightning Pin 10'</li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+		<div class="bundle-field vc_row">
+			<div class="bundle-input-area vc_col-sm-6 bundleInput3">
+				<input type="number" id="bundle3" value="0">
+				<label for="bundle3">Shlotzskys QSR Bundle - Counter Cashier - Quantity</label>
+				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
+			</div>
+			<div class="bundleGrid3 vc_col-sm-6">
+				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
+				<ul>
+					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Air <small>16GB White</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Mini <small>16GB White</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> 16x16 Cash Drawer</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Cash Drawer APG Mount Bracket</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Customer Display Stand <small>(iPad Mini) Rev22W</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Quick Service Software License</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Customer Display Software License</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Hardware Configuration Services</li>
+					<li class="terminal"><span data-multiplier="1">2</span> Two Power Adaptors, Lightning Pin 10'</li>
+				</ul>
+			</div>
+		</div>
+
 	</div>
 	<!-- end new code -->
 	<div class="form-section section1">	
@@ -677,13 +802,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	
 		<div class="validationField required integer bundleInput">
 			<label for="00N50000002lIFm">No. of Terminals:</label>
-			<input id="00N50000002lIFm" name="00N50000002lIFm" size="20" type="text" value="2">
+			<input id="00N50000002lIFm" name="00N50000002lIFm" size="20" type="number" value="2">
 		</div>
 		<div class="validationField addTillInput">
-			<label for="00N50000003WwtT">Additional Till Tray</label>
+			<label for="00N50000003WwtT">Additional Till Trays</label>
 			<input id="00N50000003WwtT" name="00N50000003WwtT" maxlength="40" value="1" checked="checked" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<div class="last-choices" hidden>
+				<span>How Many?</span>
+				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+			</div>
+		</div>
+		<div class="validationField addInput">
+			<label for="kds_bundle">Additional KDS Bundle?</label>
+			<input id="kds_bundle" name="kds_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<div class="last-choices" hidden>
+				<span>How Many?</span>
+				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+			</div>
+		</div>
+		<div class="validationField addInput">
+			<label for="printers_bundle">Additional Printers?</label>
+			<input id="printers_bundle" name="printers_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<div class="last-choices" hidden>
+				<span>How Many?</span>
+				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+			</div>
+		</div>
+		<div class="validationField addInput">
+			<input id="mobile_orders_bundle" name="mobile_orders_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<label for="mobile_orders_bundle">Additional Mobile Order Takers?</label>
+			<div class="last-choices" hidden>
+				<span>How Many?</span>
+				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+			</div>
+		</div>
+		<div class="validationField addRassInput">
+			<label for="RAAS_bundle">RAAS?</label>
+			<input id="RAAS_bundle" name="RAAS_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 		</div>
 		<div class="bundleGrid">
+				<h3 class="form-title">Bundle Total Order</h3>
+
 			<h5>Focus Brands Exclusive Discounted Bundle</h5>
 			<ul>
 				<li class="terminal"><span data-multiplier="1">2</span> Apple iPad Air <small>16GB White</small></li>
@@ -695,8 +854,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="terminal"><span data-multiplier="1">2</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
 				<li class="terminal"><span data-multiplier="1">2</span> Enterprise Quick Service Software License</li>
 				<li class="terminal"><span data-multiplier="1">2</span> Enterprise Customer Display Software License</li>
-				<li class="terminal"><span data-multiplier="1">2</span> Hardware Configuration Services</li>
-				<li class="addTill" style="width: 100%;"><span data-multiplier="1">1</span> Additional Till Tray <small>additional Tray Insert for your cash drawer(s)</small></li>
+				<li class="terminal"><span data-multiplier="1">2</span> 16x16 Cash Drawer</li>
+				<li class="terminal"><span data-multiplier="1">2</span> 2 Power Adaptor, Lightning Pin 10'</li>
+				<li class="total-last-choices addTill" ><span data-multiplier="1">1</span> Additional Till Tray <small>additional Tray Insert for your cash drawer(s)</small></li>
+				<li class="total-last-choices addKDS" ><span data-multiplier="1">1</span> Additional KDS</li>
+				<li class="total-last-choices addPrinters" ><span data-multiplier="1">1</span> Additional Printers</li>
+				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">1</span> Additional Mobile Order Takers</li>
+				<li class="addRAAS" ><span data-multiplier="1">1</span> Add RAAS</li>
 			</ul>
 		</div>
 		

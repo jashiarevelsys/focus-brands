@@ -1,0 +1,37 @@
+.bundle-field {
+	.bundle-input-area {
+		input, label {
+			display: inline;
+		}
+		input {
+			width: 50px;
+			margin-right: 10px;	
+		}
+		p {
+			margin: 10px 0px;
+		}
+	}
+	.bundleGrid1, .bundleGrid2, .bundleGrid3 {
+		h5 {
+
+    		color: #c3d941;
+    		font-size: .875em;
+    		text-transform: uppercase;
+		}
+		ul {
+			list-style-type: none;
+		}
+	}
+}
+.last-choices {
+	margin-left: 6px;
+    margin-top: 6px;
+	input {
+		display: inline;
+    	width: 56px;
+	}
+}
+.total-last-choices {
+	width: 50%;
+	display: inline;
+}

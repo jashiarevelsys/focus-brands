@@ -1,0 +1,24 @@
+.bundle-field .bundle-input-area input, .bundle-field .bundle-input-area label {
+  display: inline; }
+.bundle-field .bundle-input-area input {
+  width: 50px;
+  margin-right: 10px; }
+.bundle-field .bundle-input-area p {
+  margin: 10px 0px; }
+.bundle-field .bundleGrid1 h5, .bundle-field .bundleGrid2 h5, .bundle-field .bundleGrid3 h5 {
+  color: #c3d941;
+  font-size: .875em;
+  text-transform: uppercase; }
+.bundle-field .bundleGrid1 ul, .bundle-field .bundleGrid2 ul, .bundle-field .bundleGrid3 ul {
+  list-style-type: none; }
+
+.last-choices {
+  margin-left: 6px;
+  margin-top: 6px; }
+  .last-choices input {
+    display: inline;
+    width: 56px; }
+
+.total-last-choices {
+  width: 50%;
+  display: inline; }
