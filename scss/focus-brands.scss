@@ -19,7 +19,19 @@
     		text-transform: uppercase;
 		}
 		ul {
+			margin: 0 0 1rem;
 			list-style-type: none;
+			li {
+			    font-size: .95rem;
+			    margin-bottom: 1em;
+			    margin-top: 1em;
+			    span {
+			    	font-weight: bold;
+				    color: #c3d941;
+				    padding-right: 3px;
+				    font-size: .95rem;
+			    }
+			}
 		}
 	}
 }

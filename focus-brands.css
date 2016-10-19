@@ -10,7 +10,17 @@
   font-size: .875em;
   text-transform: uppercase; }
 .bundle-field .bundleGrid1 ul, .bundle-field .bundleGrid2 ul, .bundle-field .bundleGrid3 ul {
+  margin: 0 0 1rem;
   list-style-type: none; }
+  .bundle-field .bundleGrid1 ul li, .bundle-field .bundleGrid2 ul li, .bundle-field .bundleGrid3 ul li {
+    font-size: .95rem;
+    margin-bottom: 1em;
+    margin-top: 1em; }
+    .bundle-field .bundleGrid1 ul li span, .bundle-field .bundleGrid2 ul li span, .bundle-field .bundleGrid3 ul li span {
+      font-weight: bold;
+      color: #c3d941;
+      padding-right: 3px;
+      font-size: .95rem; }
 
 .last-choices {
   margin-left: 6px;

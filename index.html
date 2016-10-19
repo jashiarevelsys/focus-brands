@@ -586,7 +586,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		// total bundles 
 		function syncTotalBundleQuan(){
 			_bndlQ = $('.bundleInput input').val();
-			_playerLyncQ = $('.playerLyncInput input:checked').length > 0 ? $('.playerLyncInput input:checked').val() : 0;
 			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
 			_addRASSQ = $('.addRassInput input:checked').length > 0 ? $('.addRassInput input:checked').val() : 0;
 			if ($('.bundleGrid li').length > 0 ) {
@@ -611,17 +610,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		
 		syncTotalBundleQuan();	
 		
-		$('.bundleInput input, .playerLyncInput input, .addTillInput input, .addRassInput input').on( 'keyup change' , function() {
+		$('.bundleInput input, .addTillInput input, .addRassInput input').on( 'keyup change' , function() {
 			syncTotalBundleQuan();
 		});
+		$('.addTill input').on( 'keyup change' , function() {
+			if ( $('.addTill input:checked').length > 0 ) {
+				$('.addTill .last-choices').show();
+			} else {
+				$('.addTill .last-choices').hide();				
+			}
+		});
 		$('.addKDSInput input').on( 'keyup change' , function() {
-			$('.addKDSInput .last-choices').toggle();
+			if ( $('.addKDSInput input:checked').length > 0 ) {
+				$('.addKDSInput .last-choices').show();
+			} else {
+				$('.addKDSInput .last-choices').hide();				
+			}
 		});
 		$('.addPrintersInput input').on( 'keyup change' , function() {
-			$('.addPrintersInput .last-choices').toggle();
+			if ( $('.addPrintersInput input:checked').length > 0 ) {
+				$('.addPrintersInput .last-choices').show();
+			} else {
+				$('.addPrintersInput .last-choices').hide();				
+			}
 		});
 		$('.addMobileOrdersInput input').on( 'keyup change' , function() {
-			$('.addMobileOrdersInput .last-choices').toggle();
+			if ( $('.addMobileOrdersInput input:checked').length > 0 ) {
+				$('.addMobileOrdersInput .last-choices').show();
+			} else {
+				$('.addMobileOrdersInput .last-choices').hide();				
+			}
 		});		
 		$( ".datepicker" ).datepicker({ defaultDate: 35 });
 	
@@ -649,7 +667,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<form class="reseller-form" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
 
 	<input type="hidden" name="oid" value="00D50000000JLAm">
-	<input type="hidden" name="retURL" value="http://revelsystems.com">
+	<input type="hidden" name="retURL" value="http://revelsystems.com/thank-you">
 	<input type="hidden" name="recordType" id="recordType" value="01250000000Ht2q">
 	<input type="hidden" name="lead_source" id="lead_source" value="Focus Brands W2L">
 	<input type="hidden" name="Payment_Processor__c" id="Payment_Processor__c" value="Verifone">
@@ -659,7 +677,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<h3 class="form-title">QSR Bundles</h3>
 		<div class="bundle-field vc_row">
 			<div class="bundle-input-area vc_col-sm-6 bundleInput1">
-				<input type="number" id="bundle1" value="0">
+				<input type="number" id="bundle1" value="0" min="0">
 				<label for="bundle1">QSR - Drive Thru Order Only - Quantity</label>
 				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
 			</div>
@@ -676,8 +694,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<hr>
 		<div class="bundle-field vc_row">
 			<div class="bundle-input-area vc_col-sm-6 bundleInput2">
-				<input type="number" id="bundle2" value="0">
-				<label for="bundle2">QSR - Drive Thru Cashier - Quantity</label>
+				<!-- Drive through Cashier field -->
+				<input id="00N50000008F4v5" name="00N50000008F4v5" size="20" type="number" id="bundle2" value="0" min="0">
+				<label for="00N50000008F4v5">QSR - Drive Thru Cashier - Quantity</label>
 				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
 			</div>
 			<div class="bundleGrid2 vc_col-sm-6">
@@ -687,8 +706,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<li class="terminal"><span data-multiplier="1">1</span> 16x16 Cash Drawer</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
 					<li class="terminal"><span data-multiplier="1">1</span> Cash Drawer APG Mount Bracket</li>
-					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Quick Service Software License</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Quick Service Software License</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Customer Display Software License</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Hardware Configuration Services</li>
 					<li class="terminal"><span data-multiplier="1">2</span> Two Power Adaptors, Lightning Pin 10'</li>
@@ -698,8 +717,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<hr>
 		<div class="bundle-field vc_row">
 			<div class="bundle-input-area vc_col-sm-6 bundleInput3">
-				<input type="number" id="bundle3" value="0">
-				<label for="bundle3">Shlotzskys QSR Bundle - Counter Cashier - Quantity</label>
+				<!-- Counter Cashier Field -->
+				<input id="00N50000008F4vA" name="00N50000008F4vA" type="number" id="bundle3" value="0" min="0">
+				<label for="00N50000008F4vA">QSR - Counter Cashier - Quantity</label>
 				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
 			</div>
 			<div class="bundleGrid3 vc_col-sm-6">
@@ -815,11 +835,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<input id="00N50000002lIFm" name="00N50000002lIFm" size="20" type="number" value="2">
 		</div>
 		<div class="validationField addTillInput">
-			<label for="00N50000003WwtT">Additional Till Trays</label>
-			<input id="00N50000003WwtT" name="00N50000003WwtT" maxlength="40" value="1" checked="checked" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<label for="mobile_orders_bundle_qty">Additional Till Trays</label>
+			<input id="mobile_orders_bundle_qty" name="mobile_orders_bundle_qty" maxlength="40" value="1" checked="checked" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<div class="last-choices" hidden>
 				<span>How Many?</span>
-				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+				<input type="number" name="00N50000003WwtT" id="00N50000003WwtT" min="0">
 			</div>
 		</div>
 		<div class="validationField addKDSInput">
@@ -827,7 +847,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<input id="kds_bundle" name="kds_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<div class="last-choices" hidden>
 				<span>How Many?</span>
-				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+				<input type="number" id="00N50000008F4vF" name="00N50000008F4vF" min="0">
 			</div>
 		</div>
 		<div class="validationField addPrintersInput">
@@ -835,7 +855,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<input id="printers_bundle" name="printers_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<div class="last-choices" hidden>
 				<span>How Many?</span>
-				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+				<input type="number" id="00N50000008F4vK" name="00N50000008F4vK" min="0">
 			</div>
 		</div>
 		<div class="validationField addMobileOrdersInput">
@@ -843,12 +863,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<label for="mobile_orders_bundle">Additional Mobile Order Takers?</label>
 			<div class="last-choices" hidden>
 				<span>How Many?</span>
-				<input type="number" name="mobile_orders_bundle_qty" id="mobile_orders_bundle_qty">
+				<input type="number" id="00N50000008F4vP" name="00N50000008F4vP" min="0">
 			</div>
 		</div>
 		<div class="validationField addRassInput">
 			<label for="RAAS_bundle">RAAS?</label>
 			<input id="RAAS_bundle" name="RAAS_bundle" value="1" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<div class="last-choices" hidden>
+				<span>How Many?</span>
+				<input type="number" id="00N50000008F4vU" name="00N50000008F4vU" min="0">
+			</div>
 		</div>
 		<div class="bundleGrid">
 				<h3 class="form-title">Bundle Total Order</h3>
@@ -866,10 +890,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="terminal"><span data-multiplier="1">2</span> Enterprise Customer Display Software License</li>
 				<li class="terminal"><span data-multiplier="1">2</span> 16x16 Cash Drawer</li>
 				<li class="terminal"><span data-multiplier="1">2</span> 2 Power Adaptor, Lightning Pin 10'</li>
-				<li class="total-last-choices addTill" ><span data-multiplier="1">1</span> Additional Till Tray <small>additional Tray Insert for your cash drawer(s)</small></li>
-				<li class="total-last-choices addKDS" ><span data-multiplier="1">1</span> Additional KDS</li>
-				<li class="total-last-choices addPrinters" ><span data-multiplier="1">1</span> Additional Printers</li>
-				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">1</span> Additional Mobile Order Takers</li>
+				<li class="total-last-choices addTill" ><span data-multiplier="1">0</span> Additional Till Tray <small>additional Tray Insert for your cash drawer(s)</small></li>
+				<li class="total-last-choices addKDS" ><span data-multiplier="1">0</span> Additional KDS</li>
+				<li class="total-last-choices addPrinters" ><span data-multiplier="1">0</span> Additional Printers</li>
+				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">0</span> Additional Mobile Order Takers</li>
 				<li class="addRass"><span data-multiplier="1">1</span> Add RAAS</li>
 			</ul>
 		</div>
