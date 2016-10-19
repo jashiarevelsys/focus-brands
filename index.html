@@ -546,6 +546,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		
 		$('.bundleInput1 input').on( 'keyup change' , function() {
 			syncBundleQuan1();
+			syncTotalBundleQuan();
 		});
 
 		// second Bundle
@@ -563,6 +564,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		
 		$('.bundleInput2 input').on( 'keyup change' , function() {
 			syncBundleQuan2();
+			syncTotalBundleQuan();	
 		});
 
 		// third bundles
@@ -580,29 +582,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		
 		$('.bundleInput3 input').on( 'keyup change' , function() {
 			syncBundleQuan3();
+			syncTotalBundleQuan();	
 		});
 		
 
 		// total bundles 
 		function syncTotalBundleQuan(){
-			_bndlQ = $('.bundleInput input').val();
-			_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
-			_addRASSQ = $('.addRassInput input:checked').length > 0 ? $('.addRassInput input:checked').val() : 0;
+			var _bnd1Q = $('.bundleInput1 input').val();
+			var _bnd2Q = $('.bundleInput2 input').val();
+			var _bnd3Q = $('.bundleInput3 input').val();
+			var _totalBndVal = parseInt(_bnd1Q) + parseInt(_bnd2Q) + parseInt(_bnd3Q);
+
+			//_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
+			//_addRASSQ = $('.addRassInput input:checked').length > 0 ? $('.addRassInput input:checked').val() : 0;
 			if ($('.bundleGrid li').length > 0 ) {
 				$('.bundleGrid li.terminal').each(function(i,e) {
-					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _bndlQ );
-					$(e).find('span').html(_newQ);
-				});
-				$('.bundleGrid li.playerLync').each(function(i,e) {
-					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _playerLyncQ );
-					$(e).find('span').html(_newQ);
-				});
-				$('.bundleGrid li.addTill').each(function(i,e) {
-					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
-					$(e).find('span').html(_newQ);
-				});
-				$('.bundleGrid li.addRass').each(function(i,e) {
-					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addRASSQ );
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _totalBndVal );
 					$(e).find('span').html(_newQ);
 				});
 			}
@@ -613,11 +608,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		$('.bundleInput input, .addTillInput input, .addRassInput input').on( 'keyup change' , function() {
 			syncTotalBundleQuan();
 		});
-		$('.addTill input').on( 'keyup change' , function() {
-			if ( $('.addTill input:checked').length > 0 ) {
-				$('.addTill .last-choices').show();
+
+
+		$('.addTillInput input').on( 'keyup change' , function() {
+			if ( $('.addTillInput input:checked').length > 0 ) {
+				$('.addTillInput .last-choices').show();
 			} else {
-				$('.addTill .last-choices').hide();				
+				$('.addTillInput .last-choices').hide();
+				$('.addTillInput .last-choices input').val('0');
+
 			}
 		});
 		$('.addKDSInput input').on( 'keyup change' , function() {
@@ -625,6 +624,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				$('.addKDSInput .last-choices').show();
 			} else {
 				$('.addKDSInput .last-choices').hide();				
+				$('.addKDSInput .last-choices input').val('0');
 			}
 		});
 		$('.addPrintersInput input').on( 'keyup change' , function() {
@@ -632,6 +632,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				$('.addPrintersInput .last-choices').show();
 			} else {
 				$('.addPrintersInput .last-choices').hide();				
+				$('.addPrintersInput .last-choices input').val('0');
 			}
 		});
 		$('.addMobileOrdersInput input').on( 'keyup change' , function() {
@@ -639,6 +640,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				$('.addMobileOrdersInput .last-choices').show();
 			} else {
 				$('.addMobileOrdersInput .last-choices').hide();				
+				$('.addMobileOrdersInput .last-choices input').val('0');
+			}
+		});		
+		$('.addRassInput input').on( 'keyup change' , function() {
+			if ( $('.addRassInput input:checked').length > 0 ) {
+				$('.addRassInput .last-choices').show();
+			} else {
+				$('.addRassInput .last-choices').hide();				
+				$('.addRassInput .last-choices input').val('0');
 			}
 		});		
 		$( ".datepicker" ).datepicker({ defaultDate: 35 });
@@ -830,13 +840,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</select>
 		</div>
 	
-		<div class="validationField required integer bundleInput">
-			<label for="00N50000002lIFm">No. of Terminals:</label>
-			<input id="00N50000002lIFm" name="00N50000002lIFm" size="20" type="number" value="2">
-		</div>
 		<div class="validationField addTillInput">
 			<label for="mobile_orders_bundle_qty">Additional Till Trays</label>
-			<input id="mobile_orders_bundle_qty" name="mobile_orders_bundle_qty" maxlength="40" value="1" checked="checked" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+			<input id="mobile_orders_bundle_qty" name="mobile_orders_bundle_qty" maxlength="40" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<div class="last-choices" hidden>
 				<span>How Many?</span>
 				<input type="number" name="00N50000003WwtT" id="00N50000003WwtT" min="0">
@@ -877,24 +883,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div class="bundleGrid">
 				<h3 class="form-title">Bundle Total Order</h3>
 
-			<h5>Focus Brands Exclusive Discounted Bundle</h5>
+			<h5>Total Focus Brands Exclusive Discounted Bundle</h5>
 			<ul>
-				<li class="terminal"><span data-multiplier="1">2</span> Apple iPad Air <small>16GB White</small></li>
-				<li class="terminal"><span data-multiplier="1">2</span> Apple iPad Mini <small>16GB White</small></li>
-				<li class="terminal"><span data-multiplier="1">2</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
-				<li class="terminal"><span data-multiplier="1">2</span> Vasario Cash Drawer <small>(VS320 BL1616)</small></li>
-				<li class="terminal"><span data-multiplier="1">2</span> Cash Drawer APG Mount Bracket</li>
-				<li class="terminal"><span data-multiplier="1">2</span> Customer Display Stand <small>(iPad Mini) Rev22W</small></li>
-				<li class="terminal"><span data-multiplier="1">2</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
-				<li class="terminal"><span data-multiplier="1">2</span> Enterprise Quick Service Software License</li>
-				<li class="terminal"><span data-multiplier="1">2</span> Enterprise Customer Display Software License</li>
-				<li class="terminal"><span data-multiplier="1">2</span> 16x16 Cash Drawer</li>
-				<li class="terminal"><span data-multiplier="1">2</span> 2 Power Adaptor, Lightning Pin 10'</li>
+				<li class="terminal"><span data-multiplier="1">0</span> Apple iPad Air <small>16GB White</small></li>
+				<li class="terminal"><span data-multiplier="1">0</span> Apple iPad Mini <small>16GB White</small></li>
+				<li class="terminal"><span data-multiplier="1">0</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
+				<li class="terminal"><span data-multiplier="1">0</span> Vasario Cash Drawer <small>(VS320 BL1616)</small></li>
+				<li class="terminal"><span data-multiplier="1">0</span> Cash Drawer APG Mount Bracket</li>
+				<li class="terminal"><span data-multiplier="1">0</span> Customer Display Stand <small>(iPad Mini) Rev22W</small></li>
+				<li class="terminal"><span data-multiplier="1">0</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
+				<li class="terminal"><span data-multiplier="1">0</span> Enterprise Quick Service Software License</li>
+				<li class="terminal"><span data-multiplier="1">0</span> Enterprise Customer Display Software License</li>
+				<li class="terminal"><span data-multiplier="1">0</span> 16x16 Cash Drawer</li>
+				<li class="terminal"><span data-multiplier="1">0</span> 2 Power Adaptor, Lightning Pin 10'</li>
 				<li class="total-last-choices addTill" ><span data-multiplier="1">0</span> Additional Till Tray <small>additional Tray Insert for your cash drawer(s)</small></li>
 				<li class="total-last-choices addKDS" ><span data-multiplier="1">0</span> Additional KDS</li>
 				<li class="total-last-choices addPrinters" ><span data-multiplier="1">0</span> Additional Printers</li>
 				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">0</span> Additional Mobile Order Takers</li>
-				<li class="addRass"><span data-multiplier="1">1</span> Add RAAS</li>
+				<li class="total-last-choices addRass"><span data-multiplier="1">0</span> Add RAAS</li>
 			</ul>
 		</div>
 		
