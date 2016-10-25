@@ -616,9 +616,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			} else {
 				$('.addTillInput .last-choices').hide();
 				$('.addTillInput .last-choices input').val('0');
+				$('.bundleGrid li.addTill span').html('0');
 
 			}
 		});
+
+		$('.addTillInput .last-choices input').on( 'keyup change' , function() {
+			_addTillQ = $('.addTillInput .last-choices input').val();
+			if ($('.bundleGrid li').length > 0 ) {
+				$('.bundleGrid li.addTill').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+
+		});
+
+
 		$('.addKDSInput input').on( 'keyup change' , function() {
 			if ( $('.addKDSInput input:checked').length > 0 ) {
 				$('.addKDSInput .last-choices').show();
@@ -627,6 +641,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				$('.addKDSInput .last-choices input').val('0');
 			}
 		});
+
+		$('.addKDSInput .last-choices input').on( 'keyup change' , function() {
+			_addTillQ = $('.addKDSInput .last-choices input').val();
+			if ($('.bundleGrid li').length > 0 ) {
+				$('.bundleGrid li.addKDS').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+
+		});
+
+
+
 		$('.addPrintersInput input').on( 'keyup change' , function() {
 			if ( $('.addPrintersInput input:checked').length > 0 ) {
 				$('.addPrintersInput .last-choices').show();
@@ -635,6 +663,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				$('.addPrintersInput .last-choices input').val('0');
 			}
 		});
+
+		$('.addPrintersInput .last-choices input').on( 'keyup change' , function() {
+			_addTillQ = $('.addPrintersInput .last-choices input').val();
+			if ($('.bundleGrid li').length > 0 ) {
+				$('.bundleGrid li.addPrinters').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+
+		});
+
+
+
 		$('.addMobileOrdersInput input').on( 'keyup change' , function() {
 			if ( $('.addMobileOrdersInput input:checked').length > 0 ) {
 				$('.addMobileOrdersInput .last-choices').show();
@@ -643,6 +685,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				$('.addMobileOrdersInput .last-choices input').val('0');
 			}
 		});		
+
+		$('.addMobileOrdersInput .last-choices input').on( 'keyup change' , function() {
+			_addTillQ = $('.addMobileOrdersInput .last-choices input').val();
+			if ($('.bundleGrid li').length > 0 ) {
+				$('.bundleGrid li.addMobileOrders').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+
+		});
+
+
+
 		$('.addRassInput input').on( 'keyup change' , function() {
 			if ( $('.addRassInput input:checked').length > 0 ) {
 				$('.addRassInput .last-choices').show();
@@ -650,7 +706,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				$('.addRassInput .last-choices').hide();				
 				$('.addRassInput .last-choices input').val('0');
 			}
-		});		
+		});	
+
+		$('.addRassInput .last-choices input').on( 'keyup change' , function() {
+			_addTillQ = $('.addRassInput .last-choices input').val();
+			if ($('.bundleGrid li').length > 0 ) {
+				$('.bundleGrid li.addRass').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
+					$(e).find('span').html(_newQ);
+				});
+			}
+
+		});
+
+
+
 		$( ".datepicker" ).datepicker({ defaultDate: 35 });
 	
 	});
@@ -667,14 +737,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 	<div class="wpb_text_column wpb_content_element ">
 		<div class="wpb_wrapper">
-			<p>Welcome to the&nbsp;REVELution, we are excited to have you on board!&nbsp;Please complete the below fields for your&nbsp;<u>Schlotzsky’s</u>&nbsp;restaurant and we will process your order</p>
+			<p>Welcome to the&nbsp;REVELution, we are excited to have you on board!&nbsp;Please complete the below fields for your&nbsp;<u>Schlotzsky’s</u>&nbsp;restaurant and we will process your order.</p>
 
 		</div>
 	</div>
 
 	<div class="wpb_raw_code wpb_content_element wpb_raw_html">
 		<div class="wpb_wrapper">
-			<form class="reseller-form" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+<form class="reseller-form" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
 
 	<input type="hidden" name="oid" value="00D50000000JLAm">
 	<input type="hidden" name="retURL" value="http://revelsystems.com/thank-you">
@@ -684,12 +754,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<input type="hidden" name="00N50000003GwXj" id="00N50000003GwXj" value="Schlotzsky’s">
 	<!-- New Code -->
 	<div class="form-section container">
-		<h3 class="form-title">QSR Bundles</h3>
+		<h3 class="form-title">Bundles</h3>
 		<div class="bundle-field vc_row">
 			<div class="bundle-input-area vc_col-sm-6 bundleInput1">
 				<input type="number" id="bundle1" value="0" min="0">
-				<label for="bundle1">QSR - Drive Thru Order Only - Quantity</label>
-				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
+				<label for="bundle1">Drive Through Order Only Bundle</label>
+				<p>Please enter quantity of Drive Thru Order Only bundles desired.</p>
 			</div>
 			<div class="bundleGrid1 vc_col-sm-6">
 				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
@@ -706,8 +776,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div class="bundle-input-area vc_col-sm-6 bundleInput2">
 				<!-- Drive through Cashier field -->
 				<input id="00N50000008F4v5" name="00N50000008F4v5" size="20" type="number" id="bundle2" value="0" min="0">
-				<label for="00N50000008F4v5">QSR - Drive Thru Cashier - Quantity</label>
-				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
+				<label for="00N50000008F4v5">Drive Through Cashier Bundle</label>
+				<p>Please enter quantity of Drive Through Cashier bundles desired.</p>
 			</div>
 			<div class="bundleGrid2 vc_col-sm-6">
 				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
@@ -729,8 +799,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div class="bundle-input-area vc_col-sm-6 bundleInput3">
 				<!-- Counter Cashier Field -->
 				<input id="00N50000008F4vA" name="00N50000008F4vA" type="number" id="bundle3" value="0" min="0">
-				<label for="00N50000008F4vA">QSR - Counter Cashier - Quantity</label>
-				<p>Enter in the number of devices you would like. Final summary at the bottom.</p>
+				<label for="00N50000008F4vA">Counter Cashier Bundle</label>
+				<p>Please enter quantity of Counter Cashier bundles desired.</p>
 			</div>
 			<div class="bundleGrid3 vc_col-sm-6">
 				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
@@ -747,6 +817,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<li class="terminal"><span data-multiplier="1">1</span> Hardware Configuration Services</li>
 					<li class="terminal"><span data-multiplier="1">2</span> Two Power Adaptors, Lightning Pin 10'</li>
 				</ul>
+			</div>
+		</div>
+		<hr>
+		<div class="vc_row form-section">
+			<div class="wpb_text_column wpb_content_element ">
+				<div class="wpb_wrapper">
+					<p>Additional Products</p>
+				</div>
+			</div>		
+			<div class="vc_col-sm-6">
+				<div class="validationField addTillInput">
+					<label for="mobile_orders_bundle_qty">Additional Till Trays</label>
+					<input id="mobile_orders_bundle_qty" name="mobile_orders_bundle_qty" maxlength="40" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+					<div class="last-choices" hidden>
+						<span>How Many?</span>
+						<input type="number" name="00N50000003WwtT" id="00N50000003WwtT" min="0">
+					</div>
+				</div>
+				<div class="validationField addKDSInput">
+					<label for="kds_bundle">Additional KDS Bundle?</label>
+					<input id="kds_bundle" name="kds_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+					<div class="last-choices" hidden>
+						<span>How Many?</span>
+						<input type="number" id="00N50000008F4vF" name="00N50000008F4vF" min="0">
+					</div>
+				</div>
+			</div>
+			<div class="vc_col-sm-6">			
+				<div class="validationField addPrintersInput">
+					<label for="printers_bundle">Additional Printers?</label>
+					<input id="printers_bundle" name="printers_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+					<div class="last-choices" hidden>
+						<span>How Many?</span>
+						<input type="number" id="00N50000008F4vK" name="00N50000008F4vK" min="0">
+					</div>
+				</div>
+				<div class="validationField addMobileOrdersInput">
+					<input id="mobile_orders_bundle" name="mobile_orders_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
+					<label for="mobile_orders_bundle">Additional Mobile Order Takers?</label>
+					<div class="last-choices" hidden>
+						<span>How Many?</span>
+						<input type="number" id="00N50000008F4vP" name="00N50000008F4vP" min="0">
+					</div>
+				</div>				
 			</div>
 		</div>
 
@@ -792,7 +906,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</div>
 	<div class="form-section section2">	
 
-		<h3 class="form-title">Contact Information:</h3>
+		<h3 class="form-title">* Contact Information:</h3>
 		
 		<div class="validationField required">
 			<label for="company">Company</label>
@@ -840,46 +954,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</select>
 		</div>
 	
-		<div class="validationField addTillInput">
-			<label for="mobile_orders_bundle_qty">Additional Till Trays</label>
-			<input id="mobile_orders_bundle_qty" name="mobile_orders_bundle_qty" maxlength="40" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
-			<div class="last-choices" hidden>
-				<span>How Many?</span>
-				<input type="number" name="00N50000003WwtT" id="00N50000003WwtT" min="0">
-			</div>
-		</div>
-		<div class="validationField addKDSInput">
-			<label for="kds_bundle">Additional KDS Bundle?</label>
-			<input id="kds_bundle" name="kds_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
-			<div class="last-choices" hidden>
-				<span>How Many?</span>
-				<input type="number" id="00N50000008F4vF" name="00N50000008F4vF" min="0">
-			</div>
-		</div>
-		<div class="validationField addPrintersInput">
-			<label for="printers_bundle">Additional Printers?</label>
-			<input id="printers_bundle" name="printers_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
-			<div class="last-choices" hidden>
-				<span>How Many?</span>
-				<input type="number" id="00N50000008F4vK" name="00N50000008F4vK" min="0">
-			</div>
-		</div>
-		<div class="validationField addMobileOrdersInput">
-			<input id="mobile_orders_bundle" name="mobile_orders_bundle" value="0" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
-			<label for="mobile_orders_bundle">Additional Mobile Order Takers?</label>
-			<div class="last-choices" hidden>
-				<span>How Many?</span>
-				<input type="number" id="00N50000008F4vP" name="00N50000008F4vP" min="0">
-			</div>
-		</div>
 		<div class="validationField addRassInput">
-			<label for="RAAS_bundle">RAAS?</label>
+			<label for="RAAS_bundle">Would you like to be contacted about Revel as a Service (Raas)?</label>
 			<input id="RAAS_bundle" name="RAAS_bundle" value="1" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 			<div class="last-choices" hidden>
 				<span>How Many?</span>
 				<input type="number" id="00N50000008F4vU" name="00N50000008F4vU" min="0">
 			</div>
 		</div>
+		<p>*Please note a credit check will take place.</p>
 		<div class="bundleGrid">
 				<h3 class="form-title">Bundle Total Order</h3>
 
@@ -900,7 +983,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li class="total-last-choices addKDS" ><span data-multiplier="1">0</span> Additional KDS</li>
 				<li class="total-last-choices addPrinters" ><span data-multiplier="1">0</span> Additional Printers</li>
 				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">0</span> Additional Mobile Order Takers</li>
-				<li class="total-last-choices addRass"><span data-multiplier="1">0</span> Add RAAS</li>
+				<li class="total-last-choices addRass"><span data-multiplier="1">0</span> Add RaaS</li>
 			</ul>
 		</div>
 		
