@@ -591,23 +591,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			var _bnd1Q = $('.bundleInput1 input').val();
 			var _bnd2Q = $('.bundleInput2 input').val();
 			var _bnd3Q = $('.bundleInput3 input').val();
-			var _totalBndVal = parseInt(_bnd1Q) + parseInt(_bnd2Q) + parseInt(_bnd3Q);
+			var _totalBndVal1 = parseInt(_bnd3Q);
+			var _totalBndVal2 = parseInt(_bnd2Q) + parseInt(_bnd3Q);
+			var _totalBndVal3 = parseInt(_bnd1Q) + parseInt(_bnd2Q) + parseInt(_bnd3Q);
 
 			//_addTillQ = $('.addTillInput input:checked').length > 0 ? $('.addTillInput input:checked').val() : 0;
 			//_addRASSQ = $('.addRassInput input:checked').length > 0 ? $('.addRassInput input:checked').val() : 0;
 			if ($('.bundleGrid li').length > 0 ) {
-				$('.bundleGrid li.terminal').each(function(i,e) {
-					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _totalBndVal );
+				$('.bundleGrid li.terminal.3-third-bundle').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _totalBndVal3 );
+					$(e).find('span').html(_newQ);
+				});
+				$('.bundleGrid li.terminal.2-second-bundle').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _totalBndVal2 );
+					$(e).find('span').html(_newQ);
+				});
+				$('.bundleGrid li.terminal.1-first-bundle').each(function(i,e) {
+					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _totalBndVal1 );
 					$(e).find('span').html(_newQ);
 				});
 			}
 		}
 		
-		syncTotalBundleQuan();	
+		// syncTotalBundleQuan();	
 		
-		$('.bundleInput input, .addTillInput input, .addRassInput input').on( 'keyup change' , function() {
-			syncTotalBundleQuan();
-		});
+		// $('.bundleInput input, .addTillInput input, .addRassInput input').on( 'keyup change' , function() {
+		// 	syncTotalBundleQuan();
+		// });
 
 
 		$('.addTillInput input').on( 'keyup change' , function() {
@@ -699,26 +709,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-		$('.addRassInput input').on( 'keyup change' , function() {
-			if ( $('.addRassInput input:checked').length > 0 ) {
-				$('.addRassInput .last-choices').show();
-			} else {
-				$('.addRassInput .last-choices').hide();				
-				$('.addRassInput .last-choices input').val('0');
-			}
-		});	
-
-		$('.addRassInput .last-choices input').on( 'keyup change' , function() {
-			_addTillQ = $('.addRassInput .last-choices input').val();
-			if ($('.bundleGrid li').length > 0 ) {
-				$('.bundleGrid li.addRass').each(function(i,e) {
-					var _newQ = parseInt($(e).find('span').attr('data-multiplier')) * parseInt( _addTillQ );
-					$(e).find('span').html(_newQ);
-				});
-			}
-
-		});
-
 
 
 		$( ".datepicker" ).datepicker({ defaultDate: 35 });
@@ -747,7 +737,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <form class="reseller-form" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
 
 	<input type="hidden" name="oid" value="00D50000000JLAm">
-	<input type="hidden" name="retURL" value="http://revelsystems.com/thank-you">
+	<input type="hidden" name="retURL" value="http://staging.revelsystems.com/focus-brands/thank-you/">
 	<input type="hidden" name="recordType" id="recordType" value="01250000000Ht2q">
 	<input type="hidden" name="lead_source" id="lead_source" value="Focus Brands W2L">
 	<input type="hidden" name="Payment_Processor__c" id="Payment_Processor__c" value="Verifone">
@@ -756,18 +746,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<div class="form-section container">
 		<h3 class="form-title">Bundles</h3>
 		<div class="bundle-field vc_row">
-			<div class="bundle-input-area vc_col-sm-6 bundleInput1">
-				<input type="number" id="bundle1" value="0" min="0">
-				<label for="bundle1">Drive Through Order Only Bundle</label>
-				<p>Please enter quantity of Drive Thru Order Only bundles desired.</p>
+			<div class="bundle-input-area vc_col-sm-6 bundleInput3">
+				<!-- Counter Cashier Field -->
+				<input id="00N50000008F4vA" name="00N50000008F4vA" type="number" id="bundle3" value="0" min="0">
+				<label for="00N50000008F4vA">Counter Cashier Bundle</label>
+				<p>Please enter quantity of Counter Cashier bundles desired.</p>
 			</div>
-			<div class="bundleGrid1 vc_col-sm-6">
+			<div class="bundleGrid3 vc_col-sm-6">
 				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
 				<ul>
 					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Air <small>16GB White</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Mini <small>16GB White</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> 16x16 Cash Drawer</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Cash Drawer APG Mount Bracket</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Customer Display Stand <small>(iPad Mini) Rev22W</small></li>
+					<li class="terminal"><span data-multiplier="1">1</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
 					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Quick Service Software License</li>
+					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Customer Display Software License</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Hardware Configuration Services</li>
+					<li class="terminal"><span data-multiplier="1">2</span> Two Power Adaptors, Lightning Pin 10'</li>
 				</ul>
 			</div>
 		</div>
@@ -796,26 +794,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		</div>
 		<hr>
 		<div class="bundle-field vc_row">
-			<div class="bundle-input-area vc_col-sm-6 bundleInput3">
-				<!-- Counter Cashier Field -->
-				<input id="00N50000008F4vA" name="00N50000008F4vA" type="number" id="bundle3" value="0" min="0">
-				<label for="00N50000008F4vA">Counter Cashier Bundle</label>
-				<p>Please enter quantity of Counter Cashier bundles desired.</p>
+			<div class="bundle-input-area vc_col-sm-6 bundleInput1">
+				<input type="number" id="bundle1" value="0" min="0">
+				<label for="bundle1">Drive Through Order Only Bundle</label>
+				<p>Please enter quantity of Drive Thru Order Only bundles desired.</p>
 			</div>
-			<div class="bundleGrid3 vc_col-sm-6">
+			<div class="bundleGrid1 vc_col-sm-6">
 				<h5>Focus Brands Exclusive Discounted Bundle Quantities</h5>
 				<ul>
 					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Air <small>16GB White</small></li>
-					<li class="terminal"><span data-multiplier="1">1</span> Apple iPad Mini <small>16GB White</small></li>
-					<li class="terminal"><span data-multiplier="1">1</span> 16x16 Cash Drawer</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
-					<li class="terminal"><span data-multiplier="1">1</span> Cash Drawer APG Mount Bracket</li>
-					<li class="terminal"><span data-multiplier="1">1</span> Customer Display Stand <small>(iPad Mini) Rev22W</small></li>
-					<li class="terminal"><span data-multiplier="1">1</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
 					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Quick Service Software License</li>
-					<li class="terminal"><span data-multiplier="1">1</span> Enterprise Customer Display Software License</li>
 					<li class="terminal"><span data-multiplier="1">1</span> Hardware Configuration Services</li>
-					<li class="terminal"><span data-multiplier="1">2</span> Two Power Adaptors, Lightning Pin 10'</li>
 				</ul>
 			</div>
 		</div>
@@ -823,7 +813,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div class="vc_row form-section">
 			<div class="wpb_text_column wpb_content_element ">
 				<div class="wpb_wrapper">
-					<p>Additional Products</p>
+					<p class="additional-products">Additional Products</p>
 				</div>
 			</div>		
 			<div class="vc_col-sm-6">
@@ -862,6 +852,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					</div>
 				</div>				
 			</div>
+		</div>
+		<div class="bundleGrid">
+				<h3 class="form-title">Bundle Total Order</h3>
+
+			<h5>Total Focus Brands Exclusive Discounted Bundle</h5>
+			<ul>
+				<li class="terminal 3-third-bundle"><span data-multiplier="1">0</span> Apple iPad Air <small>16GB White</small></li>
+				<li class="terminal 1-first-bundle"><span data-multiplier="1">0</span> Apple iPad Mini <small>16GB White</small></li>
+				<li class="terminal 3-third-bundle"><span data-multiplier="1">0</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
+				<li class="terminal 2-second-bundle"><span data-multiplier="1">0</span> Cash Drawer APG Mount Bracket</li>
+				<li class="terminal 1-first-bundle"><span data-multiplier="1">0</span> Customer Display Stand <small>(iPad Mini) Rev22W</small></li>
+				<li class="terminal 2-second-bundle"><span data-multiplier="1">0</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
+				<li class="terminal 3-third-bundle"><span data-multiplier="1">0</span> Enterprise Quick Service Software License</li>
+				<li class="terminal 3-third-bundle"><span data-multiplier="1">0</span> Hardware Configuration Services</li>
+				<li class="terminal 2-second-bundle"><span data-multiplier="1">0</span> Enterprise Customer Display Software License</li>
+				<li class="terminal 2-second-bundle"><span data-multiplier="1">0</span> 16x16 Cash Drawer</li>
+				<li class="terminal 2-second-bundle"><span data-multiplier="1">0</span> 2 Power Adaptor, Lightning Pin 10'</li>
+				<li class="total-last-choices addTill" ><span data-multiplier="1">0</span> Additional Till Tray <small>additional Tray Insert for your cash drawer(s)</small></li>
+				<li class="total-last-choices addKDS" ><span data-multiplier="1">0</span> Additional KDS</li>
+				<li class="total-last-choices addPrinters" ><span data-multiplier="1">0</span> Additional Printers</li>
+				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">0</span> Additional Mobile Order Takers</li>
+			</ul>
 		</div>
 
 	</div>
@@ -956,36 +968,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	
 		<div class="validationField addRassInput">
 			<label for="RAAS_bundle">Would you like to be contacted about Revel as a Service (Raas)?</label>
-			<input id="RAAS_bundle" name="RAAS_bundle" value="1" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
-			<div class="last-choices" hidden>
-				<span>How Many?</span>
-				<input type="number" id="00N50000008F4vU" name="00N50000008F4vU" min="0">
-			</div>
+			<input id="00N50000008F4vU" name="00N50000008F4vU" value="1" type="checkbox" style="float:left;width:auto;margin:5px 10px 0 5px;">
 		</div>
-		<p>*Please note a credit check will take place.</p>
-		<div class="bundleGrid">
-				<h3 class="form-title">Bundle Total Order</h3>
-
-			<h5>Total Focus Brands Exclusive Discounted Bundle</h5>
-			<ul>
-				<li class="terminal"><span data-multiplier="1">0</span> Apple iPad Air <small>16GB White</small></li>
-				<li class="terminal"><span data-multiplier="1">0</span> Apple iPad Mini <small>16GB White</small></li>
-				<li class="terminal"><span data-multiplier="1">0</span> Arm Stand <small>(iPad Air 1 &amp; 2) Rev21W</small></li>
-				<li class="terminal"><span data-multiplier="1">0</span> Vasario Cash Drawer <small>(VS320 BL1616)</small></li>
-				<li class="terminal"><span data-multiplier="1">0</span> Cash Drawer APG Mount Bracket</li>
-				<li class="terminal"><span data-multiplier="1">0</span> Customer Display Stand <small>(iPad Mini) Rev22W</small></li>
-				<li class="terminal"><span data-multiplier="1">0</span> Epson TM-T70 Printer <small>(TM-T70II)</small></li>
-				<li class="terminal"><span data-multiplier="1">0</span> Enterprise Quick Service Software License</li>
-				<li class="terminal"><span data-multiplier="1">0</span> Enterprise Customer Display Software License</li>
-				<li class="terminal"><span data-multiplier="1">0</span> 16x16 Cash Drawer</li>
-				<li class="terminal"><span data-multiplier="1">0</span> 2 Power Adaptor, Lightning Pin 10'</li>
-				<li class="total-last-choices addTill" ><span data-multiplier="1">0</span> Additional Till Tray <small>additional Tray Insert for your cash drawer(s)</small></li>
-				<li class="total-last-choices addKDS" ><span data-multiplier="1">0</span> Additional KDS</li>
-				<li class="total-last-choices addPrinters" ><span data-multiplier="1">0</span> Additional Printers</li>
-				<li class="total-last-choices addMobileOrders" ><span data-multiplier="1">0</span> Additional Mobile Order Takers</li>
-				<li class="total-last-choices addRass"><span data-multiplier="1">0</span> Add RaaS</li>
-			</ul>
-		</div>
+		<p><strong>* Please note a credit check will take place.</strong></p>
 		
 		<input type="submit" name="submit">
 
